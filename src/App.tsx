@@ -7,6 +7,8 @@ import {
 import Home from "./pages/Home";
 import Registration from "./pages/Registration";
 import Root from "./Root";
+import "./App.css";
+
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
