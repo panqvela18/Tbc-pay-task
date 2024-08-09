@@ -1,23 +1,14 @@
-import { Link } from "react-router-dom";
 import logo from "../../assets/footer-logo.svg";
 import fbLogo from "../../assets/social-fb.svg";
 import inLogo from "../../assets/social-in.svg";
+import Navigation from "../Header/Navigation";
 
 export default function Footer() {
   return (
     <footer>
       <div className="flex items-center justify-between px-[5%] py-5 bg-white">
         <img src={logo} alt="logo" />
-        <nav>
-          <ul className="flex items-center">
-            <li className="mr-4">
-              <Link to={"/"}>Home</Link>
-            </li>
-            <li>
-              <Link to={"/registration"}>Registation</Link>
-            </li>
-          </ul>
-        </nav>
+        <Navigation />
       </div>
       <div className=" flex items-center justify-between bg-[#28445c] px-[5%] py-5">
         <div className="flex items-center">
