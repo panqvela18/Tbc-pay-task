@@ -1,4 +1,4 @@
-import { useForm, FormProvider } from "react-hook-form";
+import { useForm, FormProvider, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { RegistrationData } from "../interface";
 import { pageFieldGroups } from "../utils";
@@ -7,6 +7,7 @@ import { registrationSchema } from "../schema/schema";
 import ProgressBar from "../components/Registration/ProgresBar";
 import usePageCounter from "../hooks/usePageCounter";
 import FormPage from "../components/Registration/FormPage";
+import { useEffect } from "react";
 
 export default function Registration() {
   const { pageCount, incrementPageCount, decrementPageCount } =
@@ -15,12 +16,22 @@ export default function Registration() {
   const methods = useForm<RegistrationData>({
     resolver: zodResolver(registrationSchema),
     defaultValues: {
-      username: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
+      username: localStorage.getItem("username") || "",
+      email: localStorage.getItem("email") || "",
+      password: localStorage.getItem("password") || "",
+      confirmPassword: localStorage.getItem("confirmPassword") || "",
     },
   });
+
+  const { control } = methods;
+  const formValues = useWatch({ control });
+
+  useEffect(() => {
+    localStorage.setItem("username", formValues.username || "");
+    localStorage.setItem("email", formValues.email || "");
+    localStorage.setItem("password", formValues.password || "");
+    localStorage.setItem("confirmPassword", formValues.confirmPassword || "");
+  }, [formValues]);
 
   const handleNextPage = async () => {
     const fieldsToValidate = pageFieldGroups[pageCount];
@@ -33,6 +44,10 @@ export default function Registration() {
   const onSubmit = (data: RegistrationData) => {
     console.log(data);
     incrementPageCount();
+    localStorage.removeItem("username");
+    localStorage.removeItem("email");
+    localStorage.removeItem("password");
+    localStorage.removeItem("confirmPassword");
   };
 
   return (
