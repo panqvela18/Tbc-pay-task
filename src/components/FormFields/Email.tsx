@@ -6,8 +6,8 @@ export default function Email() {
     formState: { errors },
   } = useFormContext();
   return (
-    <div className="flex flex-col w-80 min-h-32">
-      <label className="text-gray-500 ">ელ-ფოსტა</label>
+    <div className="flex flex-col w-[275px] min-h-32">
+      <label className="text-gray-500  ">ელ-ფოსტა</label>
       <input
         type="email"
         placeholder="შეიყვანეთ ელ-ფოსტა"

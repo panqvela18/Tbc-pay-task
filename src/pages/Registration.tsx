@@ -1,22 +1,16 @@
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Done from "../components/FormFields/Done";
-import Email from "../components/FormFields/Email";
-import Password from "../components/FormFields/Password";
-import UserName from "../components/FormFields/UserName";
-import { usePageCounterStore } from "../context/store";
 import { RegistrationData } from "../interface";
-import { pageFieldGroups, registrationSchema } from "../utils";
+import { pageFieldGroups } from "../utils";
 import logo from "../assets/popup_logo_white.svg";
+import { registrationSchema } from "../schema/schema";
+import ProgressBar from "../components/Registration/ProgresBar";
+import usePageCounter from "../hooks/usePageCounter";
+import FormPage from "../components/Registration/FormPage";
 
 export default function Registration() {
-  const pageCount = usePageCounterStore((state) => state.pageCount);
-  const incrementPageCount = usePageCounterStore(
-    (state) => state.incrementPageCount
-  );
-  const decrementPageCount = usePageCounterStore(
-    (state) => state.decrementPageCount
-  );
+  const { pageCount, incrementPageCount, decrementPageCount } =
+    usePageCounter();
 
   const methods = useForm<RegistrationData>({
     resolver: zodResolver(registrationSchema),
@@ -24,20 +18,9 @@ export default function Registration() {
       username: "",
       email: "",
       password: "",
+      confirmPassword: "",
     },
   });
-
-  const formPageDisplay = () => {
-    if (pageCount === 0) {
-      return <UserName />;
-    } else if (pageCount === 1) {
-      return <Email />;
-    } else if (pageCount === 2) {
-      return <Password />;
-    } else {
-      return <Done />;
-    }
-  };
 
   const handleNextPage = async () => {
     const fieldsToValidate = pageFieldGroups[pageCount];
@@ -63,29 +46,14 @@ export default function Registration() {
             <form onSubmit={methods.handleSubmit(onSubmit)}>
               {pageCount === 3 ? null : (
                 <div className="mb-12 ">
-                  <h1 className="mb-2 font-bold text-4xl text-center text-gray-400">
+                  <h1 className="mb-4 font-bold text-4xl text-center text-gray-400">
                     რეგისტრაცია
                   </h1>
-                  <div className="relative w-full h-2 bg-gray-200 rounded">
-                    <div
-                      className="absolute top-0 left-0 h-2 bg-[#d8046c] rounded"
-                      style={{
-                        width:
-                          pageCount === 0
-                            ? "0%"
-                            : pageCount === 1
-                            ? "33.3%"
-                            : pageCount === 2
-                            ? "66.7%"
-                            : "100%",
-                      }}
-                    ></div>
-                  </div>
+                  <ProgressBar pageCount={pageCount} />
                 </div>
               )}
-
               <div>
-                <div>{formPageDisplay()}</div>
+                <FormPage pageCount={pageCount} />
                 <div className="flex items-center justify-between mt-5">
                   {pageCount === 3 ? null : (
                     <>

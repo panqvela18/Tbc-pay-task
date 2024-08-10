@@ -7,12 +7,12 @@ export default function UserName() {
   } = useFormContext();
 
   return (
-    <div className="flex flex-col w-80 min-h-32">
-      <label>მომხმარებლის სახელი</label>
+    <div className="flex flex-col w-[275px] min-h-32">
+      <label className="text-gray-500 ">მომხმარებლის სახელი</label>
       <input
         type="text"
         placeholder="შეიყვანეთ მომხმარებლის სახელი"
-        className="border border-[#0003] outline-none h-10 rounded px-3"
+        className="border border-[#0003] outline-none h-10 rounded px-3 mt-2"
         {...register("username")}
         required
       />
