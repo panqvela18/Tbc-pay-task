@@ -1,50 +1,30 @@
-# React + TypeScript + Vite
+# My React Vite Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a React-based website created using Vite, styled with Tailwind CSS, and written in TypeScript. The website includes a home page with a registration button, which redirects users to a registration page where they can sign up. The registration form is managed with React Hook Form and validated using Zod.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Vite**: Fast and modern build tool for front-end development.
+- **React**: A JavaScript library for building user interfaces.
+- **TypeScript**: Typed JavaScript at Any Scale.
+- **Tailwind CSS**: A utility-first CSS framework for styling.
+- **React Hook Form**: A performant, flexible, and extensible form library for React.
+- **Zod**: A TypeScript-first schema declaration and validation library.
+- **Zustand**: A small, fast, and scalable state management solution.
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+```plaintext
+├── public
+│   └── index.html          # The main HTML file
+├── src
+│   ├── components          # Reusable components
+│   ├── hooks               # Custom hooks for page navigation and state management
+│   ├── pages               # Pages like Home and Registration
+│   ├── App.tsx             # The main App component
+│   ├── main.tsx            # The entry point for Vite
+│   ├── index.css           # Global styles, including Tailwind CSS imports
+├── package.json            # Project dependencies and scripts
+├── tailwind.config.js      # Tailwind CSS configuration file
+├── tsconfig.json           # TypeScript configuration file
+└── README.md               # Project documentation
