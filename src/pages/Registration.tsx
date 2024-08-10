@@ -52,11 +52,11 @@ export default function Registration() {
 
   return (
     <main className="flex items-center justify-center">
-      <div className="flex items-center justify-between w-1/2 bg-white rounded-lg shadow-md">
-        <div className="bg-[#d8046c] rounded-lg min-h-[440px] flex items-center justify-center w-1/2">
+      <div className="flex items-center justify-between w-1/2 bg-white rounded-lg shadow-md max-lg:w-full max-lg:flex-col max-lg:mx-12 ">
+        <div className="bg-[#d8046c] rounded-lg min-h-[440px] flex items-center justify-center w-1/2 max-lg:w-full max-lg:min-h-28">
           <img src={logo} alt="logo" />
         </div>
-        <div className="w-1/2 relative min-h-[440px] flex items-center justify-center">
+        <div className="w-1/2 relative min-h-[440px] flex items-center justify-center max-lg:w-full max-lg:p-5">
           <FormProvider {...methods}>
             <form onSubmit={methods.handleSubmit(onSubmit)}>
               {pageCount === 3 ? null : (
@@ -77,7 +77,7 @@ export default function Registration() {
                           type="button"
                           disabled={pageCount === 0}
                           onClick={decrementPageCount}
-                          className={`p-3 bg-[#d8046c] text-white text-lg rounded ${
+                          className={`p-3 bg-[#d8046c] text-white text-lg rounded hover:bg-[#c7005d] transition duration-300 ${
                             pageCount === 0
                               ? "opacity-50 cursor-not-allowed"
                               : ""
@@ -88,7 +88,7 @@ export default function Registration() {
                       )}
                       {pageCount === 2 ? (
                         <button
-                          className="p-3 bg-[#d8046c] text-white text-lg rounded"
+                          className="p-3 bg-[#d8046c] hover:bg-[#c7005d] transition duration-300 text-white text-lg rounded"
                           type="submit"
                         >
                           დასრულება
@@ -96,7 +96,7 @@ export default function Registration() {
                       ) : (
                         <div className="flex justify-end w-full">
                           <button
-                            className="p-3 bg-[#d8046c] text-white text-lg rounded"
+                            className="p-3 bg-[#d8046c] hover:bg-[#c7005d] transition duration-300 text-white text-lg rounded"
                             type="button"
                             onClick={handleNextPage}
                           >

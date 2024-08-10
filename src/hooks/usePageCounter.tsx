@@ -8,10 +8,12 @@ export default function usePageCounter() {
   const decrementPageCount = usePageCounterStore(
     (state) => state.decrementPageCount
   );
+  const resetPageCount = usePageCounterStore((state) => state.resetPageCount);
 
   return {
     pageCount,
     incrementPageCount,
     decrementPageCount,
+    resetPageCount,
   };
 }

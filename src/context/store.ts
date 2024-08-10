@@ -4,6 +4,7 @@ type PageCounterStore = {
     pageCount: number;
     incrementPageCount: () => void;
     decrementPageCount: () => void;
+    resetPageCount: () => void;
 };
 
 export const usePageCounterStore = create<PageCounterStore>((set) => ({
@@ -12,4 +13,6 @@ export const usePageCounterStore = create<PageCounterStore>((set) => ({
         set((state) => ({ pageCount: state.pageCount + 1 })),
     decrementPageCount: () =>
         set((state) => ({ pageCount: state.pageCount - 1 })),
+    resetPageCount: () =>
+        set(() => ({ pageCount: 0 })),
 }));
