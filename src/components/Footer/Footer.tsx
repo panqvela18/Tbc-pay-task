@@ -12,8 +12,12 @@ export default function Footer() {
       </div>
       <div className=" flex items-center justify-between bg-[#28445c] px-[5%] py-5">
         <div className="flex items-center">
-          <img className="w-5 mr-1" src={fbLogo} alt="fblogo" />
-          <img className="w-5" src={inLogo} alt="inLogo" />
+          <a href="https://www.facebook.com/tbcpayge" target="_blank">
+            <img className="w-5 mr-1" src={fbLogo} alt="fblogo" />
+          </a>
+          <a href="https://www.linkedin.com/company/tbc-pay/" target="_blank">
+            <img className="w-5" src={inLogo} alt="inLogo" />
+          </a>
         </div>
         <p className="text-[#f1f5f5b3]">© TBC PAY 2024</p>
       </div>
